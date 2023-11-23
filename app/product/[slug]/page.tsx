@@ -1,3 +1,4 @@
+import AddToBag from '@/app/components/AddToBag'
 import ImageGallery from '@/app/components/ImageGallery'
 import { fullProduct } from '@/app/interface'
 import { client } from '@/app/lib/sanity'
@@ -13,6 +14,7 @@ async function getData(slug: string) {
           description,
           "slug": slug.current,
           "categoryName": category->name,
+          price_id
       }`
 
   const data: fullProduct = await client.fetch(query)
@@ -57,7 +59,15 @@ export default async function ProductPage({ params }: { params: { slug: string }
             </div> */}
 
             <div className='flex gap-2.5'>
-              <Button size='lg'>Add To Bag</Button>
+              <AddToBag
+                name={data.name}
+                description={data.description}
+                currency='GBP'
+                image={data.images[0]}
+                price={data.price}
+                price_id={data.price_id}
+                key={data._id}
+              />
               <Button size='lg' variant={'secondary'}>
                 Checkout
               </Button>
