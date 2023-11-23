@@ -16,7 +16,7 @@ export default function ImageGallery({ images }: iAppProps) {
   }
 
   return (
-    <div className='grid gap-4 lg:grid-cols-5'>
+    <div className='grid gap-4 lg:grid-cols-5 '>
       <div className='flex order-last gap-4 lg:order-none lg:flex-col'>
         {images.map((image: any, idx: any) => (
           <div key={idx} className='overflow-hidden bg-gray-100 rounded-lg'>

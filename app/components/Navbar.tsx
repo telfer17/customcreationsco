@@ -2,9 +2,11 @@
 
 import { Button } from '@/components/ui/button'
 import { ShoppingBagIcon } from 'lucide-react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useShoppingCart } from 'use-shopping-cart'
+import { headerLogo } from '../assets/logos/alt'
 
 const links = [
   {
@@ -30,12 +32,10 @@ export default function Navbar() {
   const { handleCartClick } = useShoppingCart()
 
   return (
-    <header className='mb-8 border-b'>
+    <header className='mb-8 border-b '>
       <div className='flex items-center justify-between max-w-2xl px-4 mx-auto sm:px-6 lg:max-w-7xl'>
         <Link href='/'>
-          <h1 className='text-2xl font-bold md:text-4xl'>
-            <span className='text-primary'>Custom</span>Creations
-          </h1>
+          <Image src={headerLogo} alt='Header logo' width={250} height={120} />
         </Link>
 
         <nav className='hidden gap-12 lg:flex 2xl:ml-16'>

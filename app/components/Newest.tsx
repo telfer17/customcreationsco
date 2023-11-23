@@ -23,7 +23,7 @@ export default async function Newest() {
   const data: simplifiedProduct[] = await getData()
 
   return (
-    <div className='bg-white'>
+    <div className='bg-white '>
       <div className='max-w-2xl px-4 py-16 mx-auto sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8'>
         <div className='flex items-center justify-between'>
           <h2 className='text-2xl font-bold tracking-tight text-gray-900'>Newest Products</h2>
@@ -35,7 +35,7 @@ export default async function Newest() {
           </Link>
         </div>
       </div>
-      <div className='grid grid-cols-1 mt-6 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8'>
+      <div className='grid grid-cols-1 px-4 mt-6 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8'>
         {data.map((product) => (
           <div key={product._id} className='relative group'>
             <div className='w-full overflow-hidden bg-gray-200 rounded-md cursor-pointer aspect-square group-hover:opacity-75 lg:h-80'>
@@ -50,12 +50,12 @@ export default async function Newest() {
 
             <div className='flex justify-between mt-4'>
               <div>
-                <h3 className='text-sm text-gray-700'>
+                <h3 className='pl-2 text-sm text-gray-700'>
                   <Link href={`/product/${product.slug}`}>{product.name}</Link>
                 </h3>
                 {/* <p className='mt-1 text-sm text-gray-500'>{product.categoryName}</p> */}
               </div>
-              <p className='text-sm font-medium text-gray-900'>£{product.price}</p>
+              <p className='pr-2 text-sm font-medium text-gray-900'>£{product.price}</p>
             </div>
           </div>
         ))}
