@@ -62,7 +62,7 @@ export default function Footer() {
           <CopyrightIcon width={20} height={20} className='m-0 rounded-full' />
           <p>Custom Creations Co. All rights reserved.</p>
         </div>
-        <p className='cursor-pointer'>Terms & Conditions</p>
+        <p>Terms & Conditions</p>
       </div>
     </footer>
   )
