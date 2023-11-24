@@ -16,8 +16,12 @@ export default async function Hero() {
     <section className='max-w-2xl px-4 mx-auto sm:pb-6 lg:max-w-7xl lg:px-8'>
       <div className='flex flex-wrap justify-between mb-8 md:mb-16'>
         <div className='flex flex-col justify-center w-full mb-6 sm:mb-12 lg:mb-0 lg:w-1/3 lg:pb-24 lg:pt-48'>
-          <h1 className='mb-4 text-4xl font-bold text-black sm:text-5xl md:mb-8 md:text-6xl'>Top Sellers</h1>
-          <p className='max-w-md leading-relaxed text-gray-500 xl:text-lg'>Free delivery. Order now for Christmas</p>
+          <h1 className='mb-4 text-4xl font-bold text-black sm:text-5xl md:mb-8 md:text-6xl font-montserrat'>
+            Top Sellers
+          </h1>
+          <p className='max-w-md leading-relaxed text-gray-500 xl:text-lg font-montserrat'>
+            Free delivery. Order now for Christmas
+          </p>
         </div>
 
         <div className='flex w-full mb-12 md:mb-16 lg:w-2/3'>

@@ -11,7 +11,7 @@ export default function StripeSuccess() {
           <h3 className='text-base font-semibold text-center text-gray-900 md:text-2xl'>Payment Complete</h3>
           <p className='my-2 text-gray-600'>Thank you for your purchase</p>
 
-          <Button asChild className='mt-4'>
+          <Button asChild className='mt-4 font-montserrat'>
             <Link href='/'>Homepage</Link>
           </Button>
         </div>

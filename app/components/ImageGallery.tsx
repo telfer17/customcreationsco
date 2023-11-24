@@ -41,7 +41,7 @@ export default function ImageGallery({ images }: iAppProps) {
           className='object-cover object-center w-full h-full'
         />
 
-        <span className='absolute left-0 top-0 rounded-br-lg bg-primary px-3 py-1.5 text-xs uppercase tracking-wider text-white'>
+        <span className='absolute left-0 top-0 rounded-br-lg bg-primary px-3 py-1.5 text-xs uppercase tracking-wider text-white font-montserrat'>
           Free Postage
         </span>
       </div>

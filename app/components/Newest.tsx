@@ -25,9 +25,9 @@ export default async function Newest() {
   return (
     <div className='bg-white '>
       <div className='max-w-2xl px-4 py-16 mx-auto sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8'>
-        <div className='flex items-center justify-between'>
-          <h2 className='text-2xl font-bold tracking-tight text-gray-900'>Newest Products</h2>
-          <Link className='flex items-center text-primary gap-x-1' href='/all'>
+        <div className='flex items-center justify-between font-montserrat'>
+          <h2 className='text-2xl font-bold tracking-tight text-gray-900 '>Newest Products</h2>
+          <Link className='flex items-center text-primary gap-x-1 ' href='/all'>
             See All{' '}
             <span>
               <ArrowRight />

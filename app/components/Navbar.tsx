@@ -38,11 +38,11 @@ export default function Navbar() {
           <Image src={headerLogo} alt='Header logo' width={250} height={120} />
         </Link>
 
-        <nav className='hidden gap-12 lg:flex 2xl:ml-16'>
+        <nav className='hidden gap-12 lg:flex 2xl:ml-16 font-montserrat'>
           {links.map((link, idx) => (
             <div key={idx}>
               {pathname === link.href ? (
-                <Link className='text-lg font-semibold text-primary' href={link.href}>
+                <Link className='text-lg font-semibold text-primary font-montserrat' href={link.href}>
                   {link.name}
                 </Link>
               ) : (
@@ -59,7 +59,7 @@ export default function Navbar() {
 
         <div className='flex border-r divide-x sm:border-l'>
           <Button
-            className='flex flex-col gap-y-1.5 h-12 w-12 sm:h-20 sm:w-20 md:h-24 md:w-24 rounded-none'
+            className='flex flex-col gap-y-1.5 h-12 w-12 sm:h-20 sm:w-20 md:h-24 md:w-24 rounded-none font-montserrat'
             variant='outline'
             onClick={() => handleCartClick()}
           >

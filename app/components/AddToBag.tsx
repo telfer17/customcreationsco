@@ -27,6 +27,7 @@ export default function AddToBag({ name, description, price, currency, image, pr
 
   return (
     <Button
+      className='font-montserrat'
       onClick={() => {
         addItem(product), handleCartClick()
       }}

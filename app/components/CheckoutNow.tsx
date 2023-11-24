@@ -23,6 +23,7 @@ export default function CheckoutNow({ name, description, price, currency, image,
 
   return (
     <Button
+      className='font-montserrat'
       onClick={() => {
         buyNow(product.price_id)
       }}
