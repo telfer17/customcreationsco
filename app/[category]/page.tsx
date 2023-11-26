@@ -2,9 +2,10 @@ import Link from 'next/link'
 import { simplifiedProduct } from '../interface'
 import { client } from '../lib/sanity'
 import Image from 'next/image'
+import { BackButton } from '../components/BackButton'
 
-async function getData(cateogry: string) {
-  const query = `*[_type == "product" && category->name == "${cateogry}"] {
+async function getData(category: string) {
+  const query = `*[_type == "product" && category->name == "${category}"] {
         _id,
           "imageUrl": images[0].asset->url,
           price,
@@ -18,13 +19,12 @@ async function getData(cateogry: string) {
   return data
 }
 
-// export const dynamic = 'force-dynamic'
-
 export default async function CategoryPage({ params }: { params: { category: string } }) {
   const data: simplifiedProduct[] = await getData(params.category)
 
   return (
     <div className='bg-white'>
+      <BackButton />
       <div className='max-w-2xl px-4 mx-auto sm:px-6 lg:max-w-7xl lg:px-8'>
         <div className='flex items-center justify-between'>
           <h2 className='text-2xl font-bold tracking-tight text-gray-900'>Our {params.category} Products</h2>
@@ -49,7 +49,13 @@ export default async function CategoryPage({ params }: { params: { category: str
                     <Link href={`/product/${product.slug}`}>{product.name}</Link>
                   </h3>
                 </div>
-                <p className='text-sm font-medium text-gray-900'>£{product.price}</p>
+
+                <div className='mb-4 font-montserrat'>
+                  <div className='flex items-end gap-1 text-sm'>
+                    <span className='font-bold text-gray-800 '>£{product.price}</span>
+                    <span className='text-red-500 line-through '>£{product.price + 5}</span>
+                  </div>
+                </div>
               </div>
             </div>
           ))}

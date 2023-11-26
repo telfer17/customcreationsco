@@ -56,8 +56,8 @@ export default async function Newest() {
                 {/* <p className='mt-1 text-sm text-gray-500'>{product.categoryName}</p> */}
               </div>
               <div className='flex items-end gap-2'>
-                <span className='font-medium text-gray-800 md:text-xl'>£{product.price}</span>
-                <span className=' font-medium mb-0.5 text-red-500 line-through'>£{product.price + 5}</span>
+                <span className='font-medium text-gray-800 '>£{product.price}</span>
+                <span className='font-medium text-red-500 line-through '>£{product.price + 5}</span>
               </div>
               {/* <p className='pr-2 text-sm font-medium text-gray-900'>£{product.price}</p>
               <span className='mb-0.5 text-red-500 line-through'>£{product.price + 5}</span> */}

@@ -1,4 +1,5 @@
 import AddToBag from '@/app/components/AddToBag'
+import { BackButton } from '@/app/components/BackButton'
 import ImageGallery from '@/app/components/ImageGallery'
 import { fullProduct } from '@/app/interface'
 import { client } from '@/app/lib/sanity'
@@ -28,6 +29,7 @@ export default async function ProductPage({ params }: { params: { slug: string }
   return (
     <div className='bg-white'>
       <div className='max-w-screen-xl px-4 mx-auto md:px-8'>
+        <BackButton />
         <div className='grid gap-8 md:grid-cols-2'>
           <ImageGallery images={data.images} />
 
