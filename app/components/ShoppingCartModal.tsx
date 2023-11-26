@@ -4,10 +4,20 @@ import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet'
 import Image from 'next/image'
 import { useShoppingCart } from 'use-shopping-cart'
+import { Minus, Plus } from 'lucide-react'
 
 export default function ShoppingCartModal() {
-  const { cartCount, shouldDisplayCart, handleCartClick, cartDetails, removeItem, totalPrice, redirectToCheckout } =
-    useShoppingCart()
+  const {
+    cartCount,
+    shouldDisplayCart,
+    handleCartClick,
+    cartDetails,
+    removeItem,
+    totalPrice,
+    redirectToCheckout,
+    decrementItem,
+    incrementItem
+  } = useShoppingCart()
 
   async function handleCheckoutClick(event: any) {
     event.preventDefault()
@@ -50,7 +60,15 @@ export default function ShoppingCartModal() {
                         </div>
 
                         <div className='flex items-end justify-between flex-1 text-sm'>
-                          <p className='text-gray-500'>QTY: {entry.quantity}</p>
+                          <div className='flex items-end justify-start flex-1 text-gray-500'>
+                            <span className='text-red-600 cursor-pointer'>
+                              <Minus onClick={() => decrementItem(entry.id)} />
+                            </span>
+                            <p className='items-center ml-2 mr-2'>QTY: {entry.quantity}</p>
+                            <span className='text-green-600 cursor-pointer'>
+                              <Plus onClick={() => incrementItem(entry.id)} />
+                            </span>
+                          </div>
 
                           <div className='flex'>
                             <button
