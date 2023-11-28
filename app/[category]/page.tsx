@@ -24,8 +24,8 @@ export default async function CategoryPage({ params }: { params: { category: str
 
   return (
     <div className='bg-white'>
-      <BackButton />
       <div className='max-w-2xl px-4 mx-auto sm:px-6 lg:max-w-7xl lg:px-8'>
+        <BackButton />
         <div className='flex items-center justify-between'>
           <h2 className='text-2xl font-bold tracking-tight text-gray-900'>Our {params.category} Products</h2>
         </div>

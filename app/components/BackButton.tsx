@@ -6,10 +6,7 @@ export const BackButton = () => {
   }
 
   return (
-    <button
-      className='flex max-w-2xl pl-4 mb-6 mr-10 text-sm underline text-primary sm:px-6 lg:max-w-7xl lg:px-8 font-montserrat'
-      onClick={goBack}
-    >
+    <button className='flex max-w-2xl mb-4 text-sm underline text-primary font-montserrat' onClick={goBack}>
       Back
     </button>
   )
