@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { BackButton } from '../components/BackButton'
 
 async function getData(category: string) {
-  const query = `*[_type == "product" && category->name == "${category}"] {
+  const query = `*[_type == "product" && category->name match "${category}"] {
         _id,
           "imageUrl": images[0].asset->url,
           price,
@@ -14,13 +14,13 @@ async function getData(category: string) {
           "categoryName": category->name
       }`
 
-  const data = await client.fetch(query)
+  const data = await client.fetch(query, { category })
 
   return data
 }
 
 export default async function CategoryPage({ params }: { params: { category: string } }) {
-  const data: simplifiedProduct[] = await getData(params.category)
+  const data: simplifiedProduct[] = await getData(params.category.trim())
 
   return (
     <div className='bg-white'>
