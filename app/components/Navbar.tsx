@@ -1,12 +1,13 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { Circle, ShoppingBagIcon, ShoppingCart } from 'lucide-react'
+import { Menu, ShoppingCart } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useShoppingCart } from 'use-shopping-cart'
 import { headerLogo } from '../assets/logos/alt'
+import { useState } from 'react'
 
 const links = [
   {
@@ -30,6 +31,12 @@ const links = [
 export default function Navbar() {
   const pathname = usePathname()
   const { handleCartClick, cartCount } = useShoppingCart()
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const toggleHamburgerMenu = () => {
+    setIsMenuOpen(!isMenuOpen)
+  }
 
   return (
     <header className='mb-8 border-b '>
@@ -56,6 +63,22 @@ export default function Navbar() {
             </div>
           ))}
         </nav>
+
+        <div className='hidden pl-40 cursor-pointer max-lg:block' onClick={toggleHamburgerMenu}>
+          <Menu height={25} width={25} />
+        </div>
+
+        {isMenuOpen && (
+          <div className='absolute top-0 right-0 p-4 bg-white lg:hidden'>
+            <div className='flex flex-col items-end gap-2'>
+              {links.map((link, idx) => (
+                <Link key={idx} href={link.href} className='text-lg font-semibold text-gray-600 hover:text-primary'>
+                  {link.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
 
         <div className='flex border-r divide-x sm:border-l'>
           <Button
