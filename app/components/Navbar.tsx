@@ -1,7 +1,7 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { ShoppingBagIcon } from 'lucide-react'
+import { Circle, ShoppingBagIcon, ShoppingCart } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -29,7 +29,7 @@ const links = [
 
 export default function Navbar() {
   const pathname = usePathname()
-  const { handleCartClick } = useShoppingCart()
+  const { handleCartClick, cartCount } = useShoppingCart()
 
   return (
     <header className='mb-8 border-b '>
@@ -63,8 +63,13 @@ export default function Navbar() {
             variant='outline'
             onClick={() => handleCartClick()}
           >
-            <ShoppingBagIcon />
-            <span className='hidden text-xs font-semibold text-gray-500 sm:block'>Cart</span>
+            <div className='flex'>
+              <div>
+                <ShoppingCart size={35} />
+                Cart:
+                <span className='ml-1 text-red-600'>{cartCount}</span>
+              </div>
+            </div>
           </Button>
         </div>
       </div>
