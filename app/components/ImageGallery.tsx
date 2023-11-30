@@ -32,7 +32,7 @@ export default function ImageGallery({ images }: iAppProps) {
         ))}
       </div>
 
-      <div className='relative overflow-hidden bg-gray-100 rounded-lg lg:col-span-4'>
+      <div className='relative overflow-hidden bg-gray-100 border border-gray-500 rounded-lg lg:col-span-4'>
         <Image
           src={urlFor(bigImage).url()}
           alt='product photo'
