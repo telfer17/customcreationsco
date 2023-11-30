@@ -42,7 +42,7 @@ export default async function Newest() {
               <Image
                 src={product.imageUrl}
                 alt='Product Image'
-                className='object-cover object-center w-full h-full lg:h-full lg:w-full'
+                className='object-cover object-center w-full h-full border border-gray-500 lg:h-full lg:w-full'
                 width={300}
                 height={300}
               />

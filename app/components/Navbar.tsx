@@ -1,7 +1,7 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { Menu, ShoppingCart } from 'lucide-react'
+import { Menu, ShoppingCart, X } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -64,13 +64,15 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <div className='hidden pl-40 cursor-pointer max-lg:block' onClick={toggleHamburgerMenu}>
-          <Menu height={25} width={25} />
-        </div>
-
         {isMenuOpen && (
           <div className='absolute top-0 right-0 p-4 bg-white lg:hidden'>
             <div className='flex flex-col items-end gap-2'>
+              <X
+                height={15}
+                width={15}
+                onClick={toggleHamburgerMenu}
+                className='mt-4 text-red-600 cursor-pointer hover:text-gray-600'
+              />
               {links.map((link, idx) => (
                 <Link key={idx} href={link.href} className='text-lg font-semibold text-gray-600 hover:text-primary'>
                   {link.name}
@@ -80,9 +82,9 @@ export default function Navbar() {
           </div>
         )}
 
-        <div className='flex border-r divide-x sm:border-l'>
+        <div className='flex divide-x '>
           <Button
-            className='flex flex-col gap-y-1.5 h-12 w-12 sm:h-20 sm:w-20 md:h-24 md:w-24 rounded-none font-montserrat'
+            className='flex flex-col gap-y-1.5 h-12 w-12 sm:h-20 sm:w-20 md:h-24 md:w-24 rounded-none font-montserrat md:right-6'
             variant='outline'
             onClick={() => handleCartClick()}
           >
@@ -94,6 +96,9 @@ export default function Navbar() {
               </div>
             </div>
           </Button>
+        </div>
+        <div className='hidden pl-40 cursor-pointer max-lg:block' onClick={toggleHamburgerMenu}>
+          <Menu height={30} width={30} />
         </div>
       </div>
     </header>
