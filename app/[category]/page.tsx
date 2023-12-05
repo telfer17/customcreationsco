@@ -1,18 +1,25 @@
 import Link from 'next/link'
-import { simplifiedProduct } from '../interface'
+import { ProductVariant, simplifiedProduct } from '../interface'
 import { client } from '../lib/sanity'
 import Image from 'next/image'
 import { BackButton } from '../components/BackButton'
 
 async function getData(category: string) {
   const query = `*[_type == "product" && category->name match "${category}"] {
-        _id,
-          "imageUrl": images[0].asset->url,
-          price,
-          name,
-          "slug": slug.current,
-          "categoryName": category->name
-      }`
+    _id,
+      "imageUrl": coalesce(images[0].asset->url, variants[0].images[0].asset->url),
+      price,
+      name,
+      "slug": slug.current,
+      "categoryName": category->name,
+      'catID': category->_id,
+      variants[]{
+        size,
+        price,
+        price_id,
+        images
+      }
+  }`
 
   const data = await client.fetch(query, { category })
 
@@ -53,12 +60,23 @@ export default async function CategoryPage({ params }: { params: { category: str
                   <h2 className='absolute bottom-0 left-0 text-sm text-gray-600'>{product.categoryName}</h2>
                 </div>
 
-                <div className='mb-4 font-montserrat'>
-                  <div className='flex items-end gap-1 text-sm'>
-                    <span className='font-bold text-gray-800 '>£{product.price}</span>
-                    <span className='text-red-500 line-through '>£{product.price + 5}</span>
+                {product.variants && product.variants.length > 0 ? (
+                  <div className='mb-4 font-montserrat'>
+                    <div className='flex items-end gap-1 text-sm'>
+                      <span className='inline-flex font-bold text-gray-800'>
+                        <span>£{Math.min(...product.variants.map((variant) => variant.price))}-</span>
+                        <span>{Math.max(...product.variants.map((variant) => variant.price))}</span>
+                      </span>
+                    </div>
                   </div>
-                </div>
+                ) : (
+                  <div className='mb-4 font-montserrat'>
+                    <div className='flex items-end gap-1 text-sm'>
+                      <span className='font-bold text-gray-800 '>£{product.price} </span>
+                      <span className='text-red-500 line-through '>£{product.price + 5}</span>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           ))}

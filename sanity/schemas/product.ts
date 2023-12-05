@@ -15,6 +15,23 @@ export default {
       of: [{type: 'image'}],
     },
     {
+      name: 'variants',
+      title: 'Product Variants',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            {name: 'size', type: 'string', title: 'Size'},
+            {name: 'price', type: 'number', title: 'Price'},
+            {name: 'price_id', type: 'string', title: 'Stripe Price ID'},
+            {name: 'images', type: 'array', title: 'Product Images', of: [{type: 'image'}]},
+          ],
+        },
+      ],
+    },
+
+    {
       name: 'description',
       type: 'text',
       title: 'Product Description',

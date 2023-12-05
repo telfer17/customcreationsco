@@ -9,7 +9,11 @@ interface iAppProps {
 }
 
 export default function ImageGallery({ images }: iAppProps) {
-  const [bigImage, setBigImage] = useState(images[0])
+  if (!images || images.length === 0) {
+    return <div>Images coming soon...</div>
+  }
+
+  const [bigImage, setBigImage] = useState(images && images.length > 0 ? images[0] : '')
 
   const handleSmallImageClick = (image: any) => {
     setBigImage(image)

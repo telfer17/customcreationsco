@@ -30,6 +30,7 @@ const links = [
 
 export default function Navbar() {
   const pathname = usePathname()
+
   const { handleCartClick, cartCount } = useShoppingCart()
 
   const [isMenuOpen, setIsMenuOpen] = useState(false)

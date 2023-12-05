@@ -5,6 +5,7 @@ export interface simplifiedProduct {
   slug: string
   categoryName: string
   imageUrl: string
+  variants?: ProductVariant[]
 }
 
 export interface fullProduct {
@@ -16,4 +17,13 @@ export interface fullProduct {
   images: any
   description: string
   price_id: string
+  imageUrl: string
+  variants?: ProductVariant[]
+}
+
+export interface ProductVariant {
+  size: string
+  price: number
+  price_id: string
+  images: any
 }
