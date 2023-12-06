@@ -58,7 +58,9 @@ const ProductPage: React.FC<ProductPageProps> = ({ params }) => {
       <div className='max-w-screen-xl px-4 mx-auto md:px-8'>
         <BackButton />
         <div className='grid gap-8 md:grid-cols-2'>
-          {selectedVariant ? <ImageGallery images={variantImages} /> : <ImageGallery images={nonVariantImages} />}
+          {selectedVariant
+            ? variantImages && <ImageGallery images={variantImages} />
+            : nonVariantImages && <ImageGallery images={nonVariantImages} />}
           <div className='md:py-8 font-montserrat'>
             <div className='mb-2 md:mb-3'>
               <span className='mb-0.5 inline-block text-gray-500'>{data?.categoryName}</span>

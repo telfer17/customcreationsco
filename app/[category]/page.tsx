@@ -41,15 +41,17 @@ export default async function CategoryPage({ params }: { params: { category: str
           {data.map((product) => (
             <div key={product._id} className='relative group'>
               <div className='w-full overflow-hidden bg-gray-200 rounded-md aspect-square group-hover:opacity-75 lg:h-80'>
-                <Link href={`/product/${product.slug}`}>
-                  <Image
-                    src={product.imageUrl}
-                    alt='Product image'
-                    className='object-cover object-center w-full h-full border border-gray-500 lg:h-full lg:w-full '
-                    width={300}
-                    height={300}
-                  />
-                </Link>
+                {product.imageUrl && (
+                  <Link href={`/product/${product.slug}`}>
+                    <Image
+                      src={product.imageUrl}
+                      alt='Product image'
+                      className='object-cover object-center w-full h-full border border-gray-500 lg:h-full lg:w-full '
+                      width={300}
+                      height={300}
+                    />
+                  </Link>
+                )}
               </div>
 
               <div className='flex justify-between mt-4'>
