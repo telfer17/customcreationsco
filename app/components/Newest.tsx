@@ -11,7 +11,7 @@ async function getData() {
           name,
           "slug": slug.current,
           "categoryName": category->name,
-          "imageUrl": images[0].asset->url
+          "imageUrl": coalesce(images[0].asset->url, variants[0].images[0].asset->url),
       }`
 
   const data = await client.fetch(query)
@@ -39,13 +39,15 @@ export default async function Newest() {
         {data.map((product) => (
           <div key={product._id} className='relative group'>
             <div className='w-full overflow-hidden bg-gray-200 rounded-md cursor-pointer aspect-square group-hover:opacity-75 lg:h-80'>
-              <Image
-                src={product.imageUrl}
-                alt='Product Image'
-                className='object-cover object-center w-full h-full border border-gray-500 lg:h-full lg:w-full'
-                width={300}
-                height={300}
-              />
+              {product.imageUrl && (
+                <Image
+                  src={product.imageUrl}
+                  alt='Product Image'
+                  className='object-cover object-center w-full h-full border border-gray-500 lg:h-full lg:w-full'
+                  width={300}
+                  height={300}
+                />
+              )}
             </div>
 
             <div className='flex justify-between mt-4'>
